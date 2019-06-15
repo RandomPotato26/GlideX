@@ -45,16 +45,16 @@ public class SS_Swerve extends Subsystem {
     public SS_Swerve() {
         
 
-        double FR = 10;
-        double FL = -20;
-        double BR = -50;
-        double BL = 80;
+        double FR = -13;
+        double FL = 67;
+        double BR = -2;
+        double BL = 82;
         SmartDashboard.putNumber("0 Offset", FR);
         SmartDashboard.putNumber("1 Offset", FL);
         SmartDashboard.putNumber("2 Offset", BR);
         SmartDashboard.putNumber("3 Offset", BL);
+        
 
-     
         mSwerveModules = new SwerveModule[]  {
             new SwerveModule(0, new CANSparkMax(RobotMap.getDriveMotors(0), MotorType.kBrushless), new TalonSRX(RobotMap.getAngleMotors(0)), FL),
             new SwerveModule(1, new CANSparkMax(RobotMap.getDriveMotors(1), MotorType.kBrushless), new TalonSRX(RobotMap.getAngleMotors(1)), FR),
@@ -63,8 +63,8 @@ public class SS_Swerve extends Subsystem {
         };
         mSwerveModules[3].setDriveInverted(true);
         mSwerveModules[2].setDriveInverted(false);
-        mSwerveModules[1].setDriveInverted(true);
-        mSwerveModules[0].setDriveInverted(true);
+        mSwerveModules[1].setDriveInverted(false);
+        mSwerveModules[0].setDriveInverted(false);
         
 
         for (SwerveModule module : mSwerveModules) {

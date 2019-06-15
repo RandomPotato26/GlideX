@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -46,17 +47,17 @@ public class C_HolonomicDrive extends Command {
 		// double strafe = Robot.getOI().getPrimaryController().getLeftXValue();	
 		// double rotation = Robot.getOI().getPrimaryController().getRightXValue();
 
-		if(Robot.getOI().getJoystick().getRawButton(1)){
-			Robot.getDrivetrain().setSpeedMultiplier(1);
-		}
-		else{
-			Robot.getDrivetrain().setSpeedMultiplier(.2);
-
-		}
+		Robot.getDrivetrain().setSpeedMultiplier((((Robot.getOI().getJoystick().getThrottle()+ 1)/2)-1)*-.5);
 		// System.out.println(Robot.getOI().getJoystick().getRawButton(1));
 		double forward = Robot.getOI().getJoystick().getY();
 		double strafe = Robot.getOI().getJoystick().getX();
 		double rotation = Robot.getOI().getJoystick().getZ();
+
+		if(Robot.getOI().getJoystick().getRawButton(11)){
+			forward = -Robot.getOI().getPrimaryController().getLeftYValue();
+			strafe = Robot.getOI().getPrimaryController().getLeftXValue();
+			rotation = Robot.getOI().getPrimaryController().getRightXValue();
+		}
 		// System.out.println(rotation);
 
 		
